@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post — Zilpah Idaa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .post-hero { padding: 120px 0 50px; background: var(--ivory); border-bottom: 1.5px solid var(--border); }
+    .post-cat-badge { display: inline-block; padding: 5px 14px; border-radius: 99px; background: var(--petal); color: var(--terra); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+    .post-title { font-family: var(--font-h); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.2; color: var(--espresso); margin-bottom: 18px; max-width: 780px; }
+    .post-meta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+    .post-meta-row strong { color: var(--espresso); }
+    .post-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; margin-top: 60px; }
+    @media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { display: none; } }
+    .post-cover { width: 100%; max-height: 400px; object-fit: cover; border-radius: 14px; margin-bottom: 36px; }
+    .post-body { font-family: var(--font-b); font-size: 1.05rem; line-height: 1.85; color: #4A3020; font-weight: 300; }
+    .post-body h2 { font-family: var(--font-h); font-size: 1.75rem; font-weight: 600; color: var(--espresso); margin: 2.5rem 0 1rem; }
+    .post-body h3 { font-family: var(--font-h); font-size: 1.35rem; font-weight: 600; color: var(--espresso); margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 600; color: var(--espresso); }
+    .post-body ul, .post-body ol { margin: 0 0 1.4rem 1.5rem; }
+    .post-body li { margin-bottom: 0.6rem; }
+    .post-body blockquote { border-left: 3px solid var(--terra); padding: 14px 20px; margin: 1.5rem 0; background: var(--petal); border-radius: 0 10px 10px 0; font-style: italic; color: var(--espresso); }
+    .post-body a { color: var(--terra); text-decoration: underline; }
+
+    /* Likes widget */
+    .like-btn { display: flex; align-items: center; gap: 8px; background: var(--petal); border: 1.5px solid var(--border); border-radius: 99px; padding: 9px 20px; cursor: pointer; font-family: var(--font-b); font-size: 13px; font-weight: 500; color: var(--espresso); transition: var(--ease); }
+    .like-btn:hover { border-color: var(--terra); background: #FDEADE; }
+    .like-btn.liked { background: var(--terra); color: #fff; border-color: var(--terra); }
+    .like-btn i { font-size: 15px; }
+
+    /* Stars */
+    .star-row { display: flex; gap: 5px; margin: 12px 0; }
+    .star { font-size: 24px; color: #d0c0b0; cursor: pointer; transition: color 0.15s; line-height: 1; }
+    .star.active, .star.hover { color: var(--terra); }
+
+    /* Sidebar sticky */
+    .post-sidebar { position: sticky; top: 90px; }
+    .sidebar-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: var(--sh); }
+    .sidebar-card h4 { font-family: var(--font-h); font-size: 1.1rem; font-weight: 600; color: var(--espresso); margin-bottom: 12px; }
+
+    /* Rating box */
+    .rating-form textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--font-b); font-size: 12px; color: var(--espresso); background: var(--ivory); resize: vertical; min-height: 70px; margin-top: 8px; }
+    .rating-form input { width: 100%; box-sizing: border-box; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--font-b); font-size: 12px; color: var(--espresso); background: var(--ivory); margin-top: 6px; }
+    .avg-rating { font-family: var(--font-h); font-size: 2.5rem; font-weight: 700; color: var(--terra); margin-bottom: 2px; }
+    .avg-small { font-size: 11px; color: var(--muted); }
+
+    /* Comments section */
+    .comments-section { margin-top: 60px; padding-top: 40px; border-top: 1.5px solid var(--border); }
+    .comments-section h3 { font-family: var(--font-h); font-size: 1.6rem; font-weight: 600; color: var(--espresso); margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar" class="scrolled">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">Zilpah <em>Idaa</em></a>
+    <ul class="nav-links">
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#skills">Skills</a></li>
+      <li><a href="../#projects">Work</a></li>
+      <li><a href="../blog/" style="color:var(--terra)">Blog</a></li>
+      <li><a href="../#writing">Book</a></li>
+      <li><a href="../#services">Services</a></li>
+      <li><a href="../#contact" class="btn btn-terra" style="padding:10px 22px;font-size:12px;letter-spacing:1px">Hire Me</a></li>
+    </ul>
+    <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="../#about" onclick="closeMob()">About</a>
+  <a href="../blog/" onclick="closeMob()">Blog</a>
+  <a href="../#writing" onclick="closeMob()">Book</a>
+  <a href="../#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<div id="post-hero" class="post-hero">
+  <div class="container">
+    <a href="../blog/" style="display:inline-flex;align-items:center;gap:7px;color:var(--terra);font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:24px;text-decoration:none">
+      <i class="fas fa-arrow-left" style="font-size:10px"></i> All Posts
+    </a>
+    <div id="post-cat-badge" class="post-cat-badge">Loading...</div>
+    <h1 id="post-title" class="post-title">Loading...</h1>
+    <div class="post-meta-row">
+      <span id="post-date"><i class="far fa-calendar"></i> ...</span>
+      <span id="post-read-time"><i class="far fa-clock"></i> ...</span>
+      <span>By <strong>Zilpah Idaa</strong></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:20px">
+      <button id="like-btn" class="like-btn" onclick="handleLike()">
+        <i class="far fa-heart"></i>
+        <span id="like-count">0</span> Likes
+      </button>
+      <span id="avg-display" style="font-size:12px;color:var(--muted)">Loading ratings...</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="post-layout">
+    <article>
+      <img id="post-cover" class="post-cover" src="" alt="" style="display:none" />
+      <div id="post-body" class="post-body"></div>
+
+      <!-- Rating form for mobile (inline) -->
+      <div class="sidebar-card" style="margin-top:40px">
+        <h4><i class="fas fa-star" style="color:var(--terra);margin-right:6px"></i>Rate this post</h4>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px">
+          <div>
+            <div id="avg-big" class="avg-rating">-</div>
+            <div class="avg-small" id="avg-label">No ratings yet</div>
+          </div>
+          <div>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:300">Your rating:</p>
+            <div class="star-row" id="star-row-inline">
+              <span class="star" data-v="1" onclick="setRating(1,'inline')">★</span>
+              <span class="star" data-v="2" onclick="setRating(2,'inline')">★</span>
+              <span class="star" data-v="3" onclick="setRating(3,'inline')">★</span>
+              <span class="star" data-v="4" onclick="setRating(4,'inline')">★</span>
+              <span class="star" data-v="5" onclick="setRating(5,'inline')">★</span>
+            </div>
+          </div>
+        </div>
+        <div class="rating-form" id="rating-form-inline">
+          <input type="text" id="rate-name-inline" placeholder="Your name (optional)" />
+          <textarea id="rate-review-inline" placeholder="Leave a short review (optional)"></textarea>
+          <button class="btn btn-terra" style="margin-top:10px;width:100%;justify-content:center" onclick="submitRating('inline')">
+            <i class="fas fa-star"></i> Submit Rating
+          </button>
+          <p id="rate-ok-inline" style="display:none;font-size:12px;color:var(--terra);margin-top:8px"><i class="fas fa-check-circle"></i> Thank you!</p>
+        </div>
+      </div>
+
+      <div class="comments-section">
+        <h3>Comments</h3>
+        <div id="giscus-container">
+          <!--
+            GISCUS COMMENTS SETUP (free, 2 minutes):
+            1. Go to https://giscus.app
+            2. Enter your GitHub repository (must be public with Discussions enabled)
+            3. Copy the <script> tag it generates
+            4. Paste it below, replacing this comment block
+            Example script tag from giscus.app:-->
+          <script src="https://giscus.app/client.js"
+                  data-repo="CoderZeal323/zilpah-idaa"
+                  data-repo-id="R_kgDORy1amA"
+                  data-category="General"
+                  data-category-id="DIC_kwDORy1amM4C5i2P"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="preferred_color_scheme"
+                  data-lang="en"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+          <!--<div style="padding:2rem;background:var(--petal);border-radius:12px;text-align:center;border:1.5px dashed var(--border)">
+            <p style="color:var(--muted);font-size:13px;margin-bottom:10px"><i class="fas fa-comments" style="color:var(--terra);margin-right:6px"></i>Comments powered by Giscus</p>
+    
+          </div>-->
+        </div>
+      </div>
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-card">
+        <h4>About the Author</h4>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--petal);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:600;color:var(--terra);font-size:1.2rem;flex-shrink:0">ZI</div>
+          <div><strong style="color:var(--espresso);font-size:14px;display:block">Zilpah Idaa</strong><span style="font-size:11px;color:var(--muted)">SAP PM Consultant · Author · Coach</span></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:12px;font-weight:300">Certified SAP PM specialist, petroleum engineering graduate, author of <em>Healed by Me</em>, and self-development coach.</p>
+        <a href="../#contact" class="btn btn-terra" style="font-size:11px;padding:9px 18px;width:100%;justify-content:center"><i class="fas fa-envelope"></i> Get In Touch</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h4><i class="fas fa-star" style="color:var(--terra);margin-right:6px"></i>Rate this Post</h4>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div>
+            <div id="avg-big-side" class="avg-rating">-</div>
+            <div id="avg-label-side" class="avg-small">No ratings yet</div>
+          </div>
+          <div>
+            <p style="font-size:11px;color:var(--muted);margin-bottom:6px">Your rating:</p>
+            <div class="star-row" id="star-row-side">
+              <span class="star" data-v="1" onclick="setRating(1,'side')">★</span>
+              <span class="star" data-v="2" onclick="setRating(2,'side')">★</span>
+              <span class="star" data-v="3" onclick="setRating(3,'side')">★</span>
+              <span class="star" data-v="4" onclick="setRating(4,'side')">★</span>
+              <span class="star" data-v="5" onclick="setRating(5,'side')">★</span>
+            </div>
+          </div>
+        </div>
+        <div class="rating-form">
+          <input type="text" id="rate-name-side" placeholder="Your name (optional)" />
+          <textarea id="rate-review-side" placeholder="Leave a short review..." style="min-height:55px"></textarea>
+          <button class="btn btn-terra" style="margin-top:8px;width:100%;justify-content:center;font-size:11px" onclick="submitRating('side')">
+            <i class="fas fa-star"></i> Submit
+          </button>
+          <p id="rate-ok-side" style="display:none;font-size:11px;color:var(--terra);margin-top:6px"><i class="fas fa-check-circle"></i> Thank you!</p>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h4><i class="fas fa-book-open" style="color:var(--terra);margin-right:6px"></i>My Book</h4>
+        <p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;font-weight:300"><em>Healed by Me</em> — a raw exploration of self-healing and inner work.</p>
+        <a href="../#writing" class="btn btn-outline" style="font-size:11px;padding:8px 14px;width:100%;justify-content:center">Learn More</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-logo">Zilpah <em>Idaa</em></div>
+        <div class="foot-tag">"From wells to wisdom — always becoming."</div>
+      </div>
+      <ul class="foot-links">
+        <li><a href="/">Home</a></li><li><a href="../#about">About</a></li>
+        <li><a href="../blog/">Blog</a></li><li><a href="../#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-bot"><p>&copy; <span id="yr"></span> Zilpah Idaa.</p></div>
+  </div>
+</footer>
+
+<!-- marked.js for markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../js/main.js"></script>
+<script type="module">
+  import { getLikeStatus, toggleLike, getRatings, submitRating as sbSubmitRating } from "../js/supabase-client.js";
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  const params = new URLSearchParams(location.search);
+  const slug = params.get("slug");
+  let currentRating = 0;
+  let currentRatingSide = 0;
+
+  if (!slug) {
+    document.getElementById("post-body").innerHTML = '<p style="color:var(--muted)">Post not found. <a href="../blog/">Go back to the blog.</a></p>';
+  } else {
+    // Load post
+    fetch("../posts.json")
+      .then(r => r.json())
+      .then(posts => {
+        const post = posts.find(p => p.slug === slug);
+        if (!post) {
+          document.getElementById("post-body").innerHTML = '<p>Post not found. <a href="../blog/">Back to blog.</a></p>';
+          return;
+        }
+        document.title = post.title + " — Zilpah Idaa";
+        document.getElementById("post-cat-badge").textContent = post.category;
+        document.getElementById("post-title").textContent = post.title;
+        document.getElementById("post-date").innerHTML = `<i class="far fa-calendar"></i> ${new Date(post.date).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}`;
+        document.getElementById("post-read-time").innerHTML = `<i class="far fa-clock"></i> ${post.readTime}`;
+        if (post.coverImage) {
+          const img = document.getElementById("post-cover");
+          img.src = post.coverImage;
+          img.alt = post.title;
+          img.style.display = "block";
+        }
+        document.getElementById("post-body").innerHTML = marked.parse(post.content);
+
+        // Load engagement data
+        loadLikes(slug);
+        loadRatings(slug);
+      })
+      .catch(() => {
+        document.getElementById("post-body").innerHTML = '<p>Error loading post.</p>';
+      });
+  }
+
+  async function loadLikes(slug) {
+    try {
+      const { count, liked } = await getLikeStatus(slug);
+      const btn = document.getElementById("like-btn");
+      document.getElementById("like-count").textContent = count;
+      if (liked) {
+        btn.classList.add("liked");
+        btn.querySelector("i").className = "fas fa-heart";
+      }
+    } catch {}
+  }
+
+  async function loadRatings(slug) {
+    try {
+      const { avg, count, myRating } = await getRatings(slug);
+      updateAvgDisplay(avg, count);
+      if (myRating > 0) {
+        highlightStars("inline", myRating);
+        highlightStars("side", myRating);
+        currentRating = myRating;
+        currentRatingSide = myRating;
+      }
+    } catch {}
+  }
+
+  function updateAvgDisplay(avg, count) {
+    const label = count > 0 ? `${avg} / 5  (${count} rating${count > 1 ? 's' : ''})` : "No ratings yet";
+    ["", "-side"].forEach(sfx => {
+      const big = document.getElementById(`avg-big${sfx}`);
+      const lbl = document.getElementById(`avg-label${sfx}`);
+      if (big) big.textContent = count > 0 ? avg : "-";
+      if (lbl) lbl.textContent = label;
+    });
+    const disp = document.getElementById("avg-display");
+    if (disp) disp.textContent = count > 0 ? `★ ${avg}/5 (${count} ratings)` : "No ratings yet";
+  }
+
+  window.handleLike = async function() {
+    if (!slug) return;
+    try {
+      const { liked } = await toggleLike(slug);
+      const btn = document.getElementById("like-btn");
+      const countEl = document.getElementById("like-count");
+      const curr = parseInt(countEl.textContent) || 0;
+      countEl.textContent = liked ? curr + 1 : Math.max(0, curr - 1);
+      btn.classList.toggle("liked", liked);
+      btn.querySelector("i").className = liked ? "fas fa-heart" : "far fa-heart";
+    } catch {}
+  };
+
+  function highlightStars(ctx, value) {
+    const row = document.getElementById(`star-row-${ctx}`);
+    if (!row) return;
+    row.querySelectorAll(".star").forEach(s => {
+      s.classList.toggle("active", parseInt(s.dataset.v) <= value);
+    });
+  }
+
+  window.setRating = function(value, ctx) {
+    if (ctx === "inline") currentRating = value;
+    else currentRatingSide = value;
+    highlightStars(ctx, value);
+  };
+
+  window.submitRating = async function(ctx) {
+    const rating = ctx === "inline" ? currentRating : currentRatingSide;
+    if (!rating) { alert("Please select a star rating first."); return; }
+    const name = document.getElementById(`rate-name-${ctx}`)?.value;
+    const review = document.getElementById(`rate-review-${ctx}`)?.value;
+    try {
+      await sbSubmitRating(slug, rating, name, review);
+      const ok = document.getElementById(`rate-ok-${ctx}`);
+      if (ok) ok.style.display = "block";
+      const { avg, count } = await getRatings(slug);
+      updateAvgDisplay(avg, count);
+      highlightStars("inline", rating);
+      highlightStars("side", rating);
+    } catch {
+      alert("Could not submit rating. Please check Supabase setup in README.md.");
+    }
+  };
+
+  // Star hover effects
+  ["inline", "side"].forEach(ctx => {
+    const row = document.getElementById(`star-row-${ctx}`);
+    if (!row) return;
+    row.querySelectorAll(".star").forEach(star => {
+      star.addEventListener("mouseenter", () => {
+        const v = parseInt(star.dataset.v);
+        row.querySelectorAll(".star").forEach(s => s.classList.toggle("hover", parseInt(s.dataset.v) <= v));
+      });
+      star.addEventListener("mouseleave", () => {
+        row.querySelectorAll(".star").forEach(s => s.classList.remove("hover"));
+      });
+    });
+  });
+</script>
+</body>
+</html>

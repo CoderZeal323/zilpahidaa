@@ -1,0 +1,47 @@
+backend:
+  name: github
+  repo: https://github.com/CoderZeal323/zilpahidaa.git
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["SAP PM & Operations", "Self-Development", "Coaching", "Career & Growth", "Mindset", "Discipline", "Engineering"]
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on blog listings (1-2 sentences)." }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "books"
+    label: "Books"
+    folder: "_books"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Selar Link", name: "selarLink", widget: "string", required: false }
+      - { label: "Selfany Link", name: "selfanyLink", widget: "string", required: false }
+      - { label: "Price", name: "price", widget: "string", required: false }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["Self-Development"]
+      - { label: "Published", name: "published", widget: "boolean", default: true }

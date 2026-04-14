@@ -2,8 +2,8 @@ backend:
   name: github
   repo: CoderZeal323/zilpahidaa
   branch: main
-  base_url: https://api.netlify.com
-  site_id: fanciful-daffodil-974e67
+  base_url: https://zilpahidaa.pages.dev
+  auth_endpoint: auth
 
 publish_mode: editorial_workflow
 
@@ -23,7 +23,7 @@ collections:
         name: "category"
         widget: "select"
         options: ["SAP PM & Operations", "Self-Development", "Coaching", "Career & Growth", "Mindset", "Discipline", "Engineering"]
-      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on blog listings (1-2 sentences)." }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
       - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

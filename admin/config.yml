@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: https://github.com/CoderZeal323/zilpahidaa.git
+  repo: CoderZeal323/zilpahidaa
   branch: main
   base_url: https://api.netlify.com
-  auth_endpoint: auth
+  site_id: fanciful-daffodil-974e67
 
 publish_mode: editorial_workflow
 

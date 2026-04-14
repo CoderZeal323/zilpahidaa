@@ -9,7 +9,7 @@
  */
 
 const SUPABASE_URL = "https://ojwxqnffyksaofvoqiqb.supabase.co"; 
-const SUPABASE_ANON_KEY = "sb_publishable_VJnio164lfuUAmzB-2sIAQ_p0k3F7ci";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qd3hxbmZmeWtzYW9mdm9xaXFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2ODc2ODUsImV4cCI6MjA5MDI2MzY4NX0.Lrj5q5d2s2MbEKOktfFxz3l4S1TdCARHEQw8JC0addE";
 
 // Visitor fingerprint (anonymous, stored in localStorage)
 function getVisitorId() {

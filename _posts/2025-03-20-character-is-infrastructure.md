@@ -1,6 +1,6 @@
 ---
 title: "Character Is Infrastructure: Building the Self You Can Rely On"
-date: 2025-03-20
+date: 2026-03-20
 category: Coaching
 excerpt: Just as a plant needs reliable infrastructure to run, your life needs a
   reliable internal structure. Here's what that looks like in practice.

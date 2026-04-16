@@ -66,7 +66,7 @@ h2.stitle{
   letter-spacing:0.5px;cursor:pointer;transition:var(--ease);
   border:1.5px solid transparent;white-space:nowrap;
 }
-.btn-terra{background:var(--terra);color:#fff;border-color:var(--terra)}
+.btn-terra{background:var(--terra);color:white;border-color:var(--terra)}
 .btn-terra:hover{background:var(--terra-d);transform:translateY(-2px);box-shadow:var(--sh-t)}
 .btn-outline{background:transparent;color:var(--terra);border-color:var(--terra)}
 .btn-outline:hover{background:var(--terra);color:#fff;transform:translateY(-2px);box-shadow:var(--sh-t)}

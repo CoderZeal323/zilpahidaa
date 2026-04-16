@@ -65,6 +65,7 @@ h2.stitle{
   font-family:var(--font-b);font-size:13px;font-weight:500;
   letter-spacing:0.5px;cursor:pointer;transition:var(--ease);
   border:1.5px solid transparent;white-space:nowrap;
+   color:white;
 }
 .btn-terra{background:var(--terra);color:#fff;border-color:var(--terra)}
 .btn-terra:hover{background:var(--terra-d);transform:translateY(-2px);box-shadow:var(--sh-t)}

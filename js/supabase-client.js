@@ -46,23 +46,13 @@ async function sbFetch(path, options = {}) {
 
 export async function getLikeStatus(postSlug) {
   const visitorId = getVisitorId();
-  const [total, mine] = await Promise.all([
-    sbFetch(`likes?post_slug=eq.${encodeURIComponent(postSlug)}&select=count`, {
-      headers: { Prefer: "count=exact" },
-    })
-      .then(() => 0)
-      .catch(() => 0),
-    sbFetch(
-      `likes?post_slug=eq.${encodeURIComponent(postSlug)}&visitor_id=eq.${encodeURIComponent(visitorId)}&select=id`
-    ).catch(() => []),
+  const [allLikes, mine] = await Promise.all([
+    sbFetch(`likes?post_slug=eq.${encodeURIComponent(postSlug)}&select=id`).catch(() => []),
+    sbFetch(`likes?post_slug=eq.${encodeURIComponent(postSlug)}&visitor_id=eq.${encodeURIComponent(visitorId)}&select=id`).catch(() => []),
   ]);
 
-  const countRes = await sbFetch(
-    `likes?post_slug=eq.${encodeURIComponent(postSlug)}&select=id`
-  ).catch(() => []);
-
   return {
-    count: Array.isArray(countRes) ? countRes.length : 0,
+    count: Array.isArray(allLikes) ? allLikes.length : 0,
     liked: Array.isArray(mine) && mine.length > 0,
   };
 }

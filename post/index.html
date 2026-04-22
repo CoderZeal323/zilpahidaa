@@ -316,14 +316,13 @@
     if (disp) disp.textContent = count > 0 ? `★ ${avg}/5 (${count} ratings)` : "No ratings yet";
   }
 
-  window.handleLike = async function() {
+ window.handleLike = async function() {
     if (!slug) return;
     try {
       const { liked } = await toggleLike(slug);
+      const { count } = await getLikeStatus(slug);
       const btn = document.getElementById("like-btn");
-      const countEl = document.getElementById("like-count");
-      const curr = parseInt(countEl.textContent) || 0;
-      countEl.textContent = liked ? curr + 1 : Math.max(0, curr - 1);
+      document.getElementById("like-count").textContent = count;
       btn.classList.toggle("liked", liked);
       btn.querySelector("i").className = liked ? "fas fa-heart" : "far fa-heart";
     } catch {}

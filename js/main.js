@@ -63,7 +63,7 @@ function dlCV(e) {
 
 // ── Supabase helpers ────────────────────────────────────────────────────────
 const SUPABASE_URL = "https://ojwxqnffyksaofvoqiqb.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qd3hxbmZmeWtzYW9mdm9xaXFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2ODc2ODUsImV4cCI6MjA5MDI2MzY4NX0.Lrj5q5d2s2MbEKOktfFxz3l4S1TdCARHEQw8JC0addE";
+const SUPABASE_ANON_KEY = "sb_publishable_VJnio164lfuUAmzB-2sIAQ_p0k3F7ci";
 
 async function sbPost(table, payload) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
@@ -86,9 +86,12 @@ if (cForm) {
   cForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const data = new FormData(cForm);
+    const firstName = data.get("firstName") || "";
+    const lastName = data.get("lastName") || "";
     const payload = {
-      name: data.get("name") || "",
+      name: `${firstName} ${lastName}`.trim(),
       email: data.get("email") || "",
+      reason: data.get("reason") || "",
       message: data.get("message") || "",
     };
     try {

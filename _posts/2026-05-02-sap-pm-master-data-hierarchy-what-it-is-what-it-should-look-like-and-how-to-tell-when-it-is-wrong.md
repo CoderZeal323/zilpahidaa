@@ -6,6 +6,7 @@ category: SAP PM & Operations
 excerpt: "Most people learn SAP PM by memorising transactions. That is the
   problem. Nobody shows them the map first. "
 readTime: 5 min read
+coverImage: /images/uploads/floc2.jpg
 ---
 
 

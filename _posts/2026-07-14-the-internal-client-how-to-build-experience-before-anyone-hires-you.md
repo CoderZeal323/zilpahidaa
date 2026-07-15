@@ -7,6 +7,7 @@ excerpt: >
 
   If you have ever job hunted, you have run into this wall. Every entry level listing wants two to three years of experience.
 readTime: 5 min read
+coverImage: /images/uploads/the-internal-client-build-selar.com-6a55dd4836ae6.png
 ---
 "You need experience to get experience."
 
